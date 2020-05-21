@@ -84,6 +84,71 @@ void main(List<String> arguments) {
     }
   });
 
+  //Parámentros
+  paramRequeridos(2, 2);
+  paramOpcionalesPosicionados(1);
+  paramOpcionalesNombrados(3, b: 2);
+  paramOpcionalesNombrados2(b: 2, a: 2);
+  paramOpcionalesDefecto(44);
+
+  //IF-Else
+  var acceso = edad >= 18 ? "Correcto" : "Niño";
+  print(acceso);
+
+      //Si es nulo asigna como invitado:
+  var nombreInvitado;
+  print(nombreInvitado ?? "Invitado");
+
+  //Switch case
+  var opcion = 2;
+  switch(opcion){
+    case 1:
+      print("Retorno opción $opcion");
+      break;
+    case 2:
+      print("Retorno opción $opcion");
+      continue continuaAqui;
+      break;
+    continuaAqui:
+    case 3:
+      print("Retorno opción desde continue $opcion");
+      break;
+    default:
+      print("Retorno opción $opcion");
+  }
+
+  //For
+  for(int i = 0; i <= 10; i++){
+    print("For normal $i");
+    if (i.isEven){
+      print("Condicional $i");
+    }
+  }
+
+  List <String> listaColores2 = ["Rojo", "Verde", "Amarillo"];
+  for(String color in listaColores2){
+    print(color);
+  }
+  
+  listaColores2.forEach((element) => print(element));
+
+  listaColores2.forEach((element) {
+    print(element);
+  });
+
+  //While y do while
+  int condicion = 0;
+  while(condicion <= 10){
+    print("While tiene el valor: $condicion");
+    condicion ++;
+  }
+
+  condicion = 1;
+  do{
+    print("Do while tiene el valor: $condicion");
+    condicion ++;
+  }while(condicion <= 10);
+
 }
 
 //Funciones
@@ -102,3 +167,30 @@ int addConRegreso(int a, int b){
 //Funciones de sintaxis corta Arrow y anónimas
 void funcionArrow(int a, int b) => print("El resultado es ${a + b}");
 int funcionArrowRegreso(int a, int b) => a + b;
+
+//Parámetros
+void paramRequeridos(int a, int b){
+  print(a);
+  print(b);
+}
+
+void paramOpcionalesPosicionados(int a, [int b]){
+  print(a);
+  print(b);
+}
+
+void paramOpcionalesNombrados(int a, {int b}){
+  print(a);
+  print(b);
+}
+
+//Al llamarlo se puede hacer con el nombre de la variable sin importar el orden
+void paramOpcionalesNombrados2({int a, int b}){
+  print(a);
+  print(b);
+}
+
+void paramOpcionalesDefecto(int a, {int b = 5}){
+  print(a);
+  print(b);
+}
