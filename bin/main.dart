@@ -1,3 +1,7 @@
+import 'dart:ffi';
+
+import 'Funcionario.dart';
+
 void main(List<String> arguments) {
   //Declarando variables
   int valInt = 1;
@@ -149,6 +153,54 @@ void main(List<String> arguments) {
     condicion ++;
   }while(condicion <= 10);
 
+  //Break y continue
+  for(int i = 1; i <= 3; i++){
+    for(int j = 1; j <= 3; j++){
+      print("$i $j");
+      if(i == 2 && j == 1) break;
+    }
+  }
+
+  forExterno: for(int i = 1; i <= 3; i++){
+    for(int j = 1; j <= 3; j++){
+      if(i == 2 && j == 1) continue forExterno;
+      print("$i $j");
+    }
+  }
+
+  //Usando clases
+  Empleado emp = new Empleado();
+  emp.id = 1;
+  emp.nombre = "Mario Alejandro";
+
+//  if(emp.cumpleHorario()){
+//    emp.trabajar();
+//  }
+  !emp.cumpleHorario() ? emp.trabajar() : print("No se presentó a trabajar hoy");
+
+  Empleado emp2 = Empleado()
+  ..id = 2
+  ..nombre = "Pedro Navaja";
+
+  if(emp2.cumpleHorario()){
+    emp2.trabajar();
+  }
+
+  //Constructores
+  //Trabajador tra = Trabajador();
+  Trabajador tra = Trabajador(1, "MarioA");
+  tra.trabajar();
+
+  Trabajador tra2 = Trabajador.trabajo(3, "Fernando", false);
+
+  tra2.cumpleHorario() ? print("Cumple horario") : print("No cumple horario");
+  
+  //Getters y setters
+  Funcionario func = Funcionario();
+  func.horasLaboradas = 35;
+  
+  print("El trabajador laburó ${func.horasLaboradas} días esta semana.");
+
 }
 
 //Funciones
@@ -193,4 +245,51 @@ void paramOpcionalesNombrados2({int a, int b}){
 void paramOpcionalesDefecto(int a, {int b = 5}){
   print(a);
   print(b);
+}
+
+//Clases
+class Empleado{
+  var id;
+  var nombre;
+
+  bool cumpleHorario(){
+    return true;
+  }
+
+  void trabajar(){
+    print("El empleado $id trabajó");
+  }
+}
+
+//Tipos de constructores: por defecto, por parámetro y nombrado
+class Trabajador{
+  var id;
+  var nombre;
+  var trabajo;
+
+//  Constructor por defecto:
+//  Trabajador(){
+//    print("Me ejecuté al iniciar");
+//  }
+
+//  Constructor por parámetro
+//  Trabajador(int id, String nombre){
+//    this.id = id;
+//    this.nombre = nombre;
+//  }
+
+  Trabajador(this.id, this.nombre);
+
+  //Contructor por nombre
+  Trabajador.trabajo(this.id, this.nombre, this.trabajo);
+
+  bool cumpleHorario(){
+//    return true;
+  //return de constructor por nombre:
+    return trabajo;
+  }
+
+  void trabajar(){
+    print("El empleado $nombre trabajó");
+  }
 }
