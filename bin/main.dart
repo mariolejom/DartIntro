@@ -201,6 +201,53 @@ void main(List<String> arguments) {
   
   print("El trabajador laburó ${func.horasLaboradas} días esta semana.");
 
+  //Herencia
+  Cliente cliente = Cliente();
+  cliente.id = 1;
+  cliente.nombre ="Mario";
+  cliente.salario = 100.0;
+  cliente.vehiculoAsignado = "UberBlack";
+
+  cliente.calcularSalario();
+
+  Vendedor vendedor = Vendedor();
+  vendedor.id = 2;
+  vendedor.nombre = "Juan";
+  vendedor.salario = 100;
+  vendedor.venderACliente();
+
+  vendedor.calcularSalario();
+
+  //Clases Abstractas
+  Chofer chofer = Chofer();
+  chofer.id = 1;
+  chofer.nombre = "Pepito";
+  chofer.salario = 400;
+  chofer.calcularSalario();
+  chofer.actividad();
+
+  Cajero cajero = Cajero();
+  cajero.id = 2;
+  cajero.nombre = "Pedro";
+  cajero.salario = 420;
+  cajero.calcularSalario();
+  cajero.actividad();
+
+  //Clases Implícitas
+  Chofer2 chofchof = Chofer2();
+  chofchof.id = 1;
+  chofchof.nombre = "Carlos";
+  chofchof.salario = 100;
+  chofchof.calcularSalario();
+  chofchof.buenaConducta();
+
+  Cajero2 cajcaj = Cajero2();
+  cajcaj.id = 2;
+  cajcaj.nombre = "Juan";
+  cajcaj.salario = 200;
+  cajcaj.calcularSalario();
+  cajcaj.buenaConducta();
+
 }
 
 //Funciones
@@ -291,5 +338,128 @@ class Trabajador{
 
   void trabajar(){
     print("El empleado $nombre trabajó");
+  }
+}
+
+//Herencia
+class Usuario{
+  var id;
+  var nombre;
+  double salario;
+
+  void calcularSalario(){
+    print("El trabajador tiemne un salario de ${salario * 5.5}");
+  }
+}
+
+class Cliente extends Usuario{
+  String vehiculoAsignado;
+
+  void manejarVehiculo(){
+    print("Manejando...");
+  }
+}
+
+class Vendedor extends Usuario{
+  String idCliente;
+  
+  void venderACliente(){
+    print("Vender...");
+  }
+}
+
+//Clases Abstractas
+abstract class Empleado2 {
+  var id;
+  var nombre;
+  var salario;
+
+  void calcularSalario(){
+    print("El salario del empleado es ${salario * 5.5}");
+  }
+
+  void actividad();
+}
+
+class Chofer extends Empleado2{
+  var vehiculo;
+
+  void manejar(){
+    print("manejando...");
+  }
+
+  //Llamando al método, implementando el método de la clase abstracta
+  @override
+  void actividad() {
+    print("Pasear por la ciudad");
+  }
+}
+
+class Cajero extends Empleado2{
+  var cajaAsignada;
+
+  void cobra(){
+
+  }
+
+  @override
+  void actividad() {
+    print("Cobrar a las personas");
+  }
+
+  @override
+  void calcularSalario() {
+    print("El salario del empleado es ${salario * 5.5 + 100}");
+    //super.calcularSalario();
+  }
+}
+
+//Clases Implícitas
+class Empleado3{
+  var id;
+  var nombre;
+  var salario;
+
+  void calcularSalario(){
+    print("El salario del empleado es ${salario * 5.5}");
+  }
+
+}
+
+class Conducta{
+  void buenaConducta(){
+    print("El empleado se comportó correctamente");
+  }
+}
+
+class Chofer2 implements Empleado3, Conducta{
+  var id = 1;
+  var nombre = "Roberto";
+  var salario = 100;
+
+  @override
+  void calcularSalario() {
+    print("El salario del empleado es ${salario * 5.5}");
+  }
+
+  @override
+  void buenaConducta() {
+    print("Se comportó mal");
+  }
+}
+
+class Cajero2 implements Empleado3, Conducta{
+  var id = 1;
+  var nombre = "Roberto";
+  var salario = 100;
+
+  @override
+  void calcularSalario() {
+    print("El salario del empleado es ${salario * 5.5}");
+  }
+
+  @override
+  void buenaConducta() {
+    print("Se comportó adecuadamente");
   }
 }
