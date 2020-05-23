@@ -4,6 +4,9 @@ import 'Funcionario.dart';
 
 void main(List<String> arguments) {
   //Declarando variables
+  print("""--------------------
+Declarando variables
+--------------------""");
   int valInt = 1;
   String varNombre = "Mario";
   dynamic valBool = true;
@@ -20,6 +23,9 @@ void main(List<String> arguments) {
   print(varNombre.isEmpty);
 
   //Colecciones
+  print("""--------------------
+Colecciones
+--------------------""");
   //List
   List<String> list;
   list = ["Negro", "Rojo"];
@@ -45,6 +51,9 @@ void main(List<String> arguments) {
   print(set);
 
   //Maps
+  print("""--------------------
+Diccionarios
+--------------------""");
   Map<int, dynamic> map;
   map = {1: "Rojo", 2: "Verde"};
   print(map);
@@ -61,18 +70,27 @@ void main(List<String> arguments) {
   print(map.length);
 
   //final y cons
+  print("""--------------------
+Final y Cons
+--------------------""");
   final String nombre = "Mario";
   const edad = 12;
   print(nombre);
   print(edad);
 
   //Llamando a funciones
+  print("""--------------------
+Llamando a funciones
+--------------------""");
   add();
   addConParam(3, 5);
   int regreso = addConRegreso(2, 2);
   print(regreso);
 
   //Función arrow y anónimas
+  print("""--------------------
+Funciones arrow y anónimas
+--------------------""");
   funcionArrow(2, 3);
   var resultado = funcionArrowRegreso(2, 6);
   print(resultado);
@@ -89,6 +107,9 @@ void main(List<String> arguments) {
   });
 
   //Parámentros
+  print("""--------------------
+Probando parámetros de funciones
+--------------------""");
   paramRequeridos(2, 2);
   paramOpcionalesPosicionados(1);
   paramOpcionalesNombrados(3, b: 2);
@@ -96,14 +117,20 @@ void main(List<String> arguments) {
   paramOpcionalesDefecto(44);
 
   //IF-Else
+  print("""--------------------
+If-Else
+--------------------""");
   var acceso = edad >= 18 ? "Correcto" : "Niño";
   print(acceso);
 
-      //Si es nulo asigna como invitado:
+  //Si es nulo asigna como invitado:
   var nombreInvitado;
   print(nombreInvitado ?? "Invitado");
 
   //Switch case
+  print("""--------------------
+Switch
+--------------------""");
   var opcion = 2;
   switch(opcion){
     case 1:
@@ -122,6 +149,9 @@ void main(List<String> arguments) {
   }
 
   //For
+  print("""--------------------
+For
+--------------------""");
   for(int i = 0; i <= 10; i++){
     print("For normal $i");
     if (i.isEven){
@@ -141,6 +171,9 @@ void main(List<String> arguments) {
   });
 
   //While y do while
+  print("""--------------------
+While y do while
+--------------------""");
   int condicion = 0;
   while(condicion <= 10){
     print("While tiene el valor: $condicion");
@@ -154,6 +187,9 @@ void main(List<String> arguments) {
   }while(condicion <= 10);
 
   //Break y continue
+  print("""--------------------
+Break y continue
+--------------------""");
   for(int i = 1; i <= 3; i++){
     for(int j = 1; j <= 3; j++){
       print("$i $j");
@@ -169,6 +205,9 @@ void main(List<String> arguments) {
   }
 
   //Usando clases
+  print("""--------------------
+Clases 1
+--------------------""");
   Empleado emp = new Empleado();
   emp.id = 1;
   emp.nombre = "Mario Alejandro";
@@ -187,6 +226,9 @@ void main(List<String> arguments) {
   }
 
   //Constructores
+  print("""--------------------
+Método constructor
+--------------------""");
   //Trabajador tra = Trabajador();
   Trabajador tra = Trabajador(1, "MarioA");
   tra.trabajar();
@@ -196,12 +238,18 @@ void main(List<String> arguments) {
   tra2.cumpleHorario() ? print("Cumple horario") : print("No cumple horario");
   
   //Getters y setters
+  print("""--------------------
+Getters y setters
+--------------------""");
   Funcionario func = Funcionario();
   func.horasLaboradas = 35;
   
   print("El trabajador laburó ${func.horasLaboradas} días esta semana.");
 
   //Herencia
+  print("""--------------------
+Herencia
+--------------------""");
   Cliente cliente = Cliente();
   cliente.id = 1;
   cliente.nombre ="Mario";
@@ -219,6 +267,9 @@ void main(List<String> arguments) {
   vendedor.calcularSalario();
 
   //Clases Abstractas
+  print("""--------------------
+Clases abstractas
+--------------------""");
   Chofer chofer = Chofer();
   chofer.id = 1;
   chofer.nombre = "Pepito";
@@ -234,6 +285,9 @@ void main(List<String> arguments) {
   cajero.actividad();
 
   //Clases Implícitas
+  print("""--------------------
+Clases implícitas
+--------------------""");
   Chofer2 chofchof = Chofer2();
   chofchof.id = 1;
   chofchof.nombre = "Carlos";
